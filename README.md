@@ -83,11 +83,7 @@ Filtros por Partido y Rival: Exploración comparativa entre encuentros.
 
 👉 Visita la plataforma: https://jardine-hackathon-isac-2026.vercel.app/
 ---
-## 🔒 Aviso de Privacidad y Términos de la Competencia
-Propiedad de los Datos: Los datos utilizados para la construcción de este análisis son propiedad exclusiva de ISAC 2026 y sus proveedores oficiales. No están incluidos en este repositorio ni se distribuyen públicamente en cumplimiento con las políticas de privacidad y uso de la competencia.
 
-Propiedad Intelectual: El código fuente correspondiente a la aplicación web, el diseño del esquema de base de datos (schema.sql) y la arquitectura del pipeline son de la autoría de sus creadores.
----
 
 ## 📁 Estructura del Repositorio
 
@@ -96,4 +92,7 @@ Propiedad Intelectual: El código fuente correspondiente a la aplicación web, e
 ├── Db.py                      # Pipeline ETL para procesamiento de eventos y cálculo de métricas
 ├── Renombrar.py               # Script de ordenamiento y estandarización de archivos
 └── README.md                  # Documentación del proyecto
-
+```
+## 🔒 Aviso de Privacidad y Términos de la Competencia
+Propiedad de los Datos: Los datos utilizados para la construcción de este análisis son propiedad exclusiva de ISAC 2026 y sus proveedores oficiales. No están incluidos en este repositorio ni se distribuyen públicamente en cumplimiento con las políticas de privacidad y uso de la competencia.
+---
