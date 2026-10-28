@@ -87,7 +87,7 @@ Filtros por Partido y Rival: Exploración comparativa entre encuentros.
 
 Este proyecto fue desarrollado colaborativamente por:
 
-* **Emir** — [GitHub](https://github.com/tu-usuario)
+* **Cristian Emir Lujan De la Rosa (yo)** — [GitHub](https://github.com/tu-usuario)
 * **Joel Osmar Nicolás Vásquez** — [@Joel-Osmar](https://github.com/Joel-Osmar)
 * **Jaime Fabián Cortés Vega** — [@JaimeVGA](https://github.com/JaimeVGA)
 * **Javier Gustavo Hernández Mora**
