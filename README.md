@@ -24,28 +24,31 @@ A través de un pipeline personalizado desarrollado en Python, se procesaron enc
 * **Análisis por Ventanas de Tiempo:** Micro-análisis del rendimiento de jugadores en intervalos de 5 minutos según el estado del partido (ganando, empatando, perdiendo)[cite: 3].
 
 ---
-
 ## 🏗️ Arquitectura de Ingeniería de Datos & Pipeline ETL
 
 El desarrollo se estructuró en tres capas principales de ingeniería de software y analítica deportiva:
+
+```text
 ┌─────────────────────────┐
 │ Extracción & Filtrado   │ ──► Selección de partidos y eventos del DT objetivo
 └────────────┬────────────┘
-│
-▼
+             │
+             ▼
 ┌─────────────────────────┐
 │ Normalización & ETL     │ ──► Limpieza de caracteres, estandarización de campos,
 └────────────┬────────────┘     cálculo de coordenadas (x, y) y tiempos de juego
-│
-▼
+             │
+             ▼
 ┌─────────────────────────┐
 │ Modelo Relacional SQL   │ ──► Indexación y estructuración en esquema
 └────────────┬────────────┘     multitabla optimizado para analítica
-│
-▼
+             │
+             ▼
 ┌─────────────────────────┐
 │ Plataforma Web Dashboard│ ──► Visualización de métricas tácticas y dashboards
 └─────────────────────────┘
+```
+---
 
 ### Principales Funcionalidades del Pipeline:
 1. **Atomicidad y Gestión de Descargas:** Guardado atómico de archivos para garantizar la integridad de los datos procesados[cite: 2].
