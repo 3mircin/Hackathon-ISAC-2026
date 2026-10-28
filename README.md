@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python)](https://www.python.org/)
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=flat&logo=vercel)](https://jardine-hackathon-isac-2026.vercel.app/)
 
-Repositorio del proyecto desarrollado para el **ISAC 2026 Sports Analytics Hackathon (Club América)**. Este proyecto integra una **plataforma web interactiva de analítica táctica** alimentada por un **pipeline de ingeniería de datos (ETL)** diseñado para procesar, estructurar y consultar datos de eventos orientados al modelo de juego del director técnico André Jardine[cite: 1, 2, 3].
+Repositorio del proyecto desarrollado para el **ISAC 2026 Sports Analytics Hackathon (Club América)**. Este proyecto integra una **plataforma web interactiva de analítica táctica** alimentada por un **pipeline de ingeniería de datos (ETL)** diseñado para procesar, estructurar y consultar datos de eventos orientados al modelo de juego del director técnico André Jardine.
 
 🌐 **Plataforma Web Interactiva:** [https://jardine-hackathon-isac-2026.vercel.app/](https://jardine-hackathon-isac-2026.vercel.app/)
 
@@ -15,13 +15,13 @@ Repositorio del proyecto desarrollado para el **ISAC 2026 Sports Analytics Hacka
 
 El objetivo del proyecto fue transformar registros de eventos en métricas tácticas accionables y visualizaciones intuitivas para el análisis de rendimiento deportivo. 
 
-A través de un pipeline personalizado desarrollado en Python, se procesaron encuentros de la Liga MX para extraer patrones tácticos clave[cite: 1, 2, 3]:
+A través de un pipeline personalizado desarrollado en Python, se procesaron encuentros de la Liga MX para extraer patrones tácticos clave:
 
-* **Generación de Ocasiones y $xG$:** Análisis de la calidad de remates, carril de creación donde se encontraba el jugador al momento de la ocasión/gol (izquierdo, centro, derecho) y contribución de pases clave[cite: 3].
-* **Progresión de Balón:** Medición de pases progresivos calculando la reducción de distancia a puerta a través de coordenadas $(x, y)$, cambios de juego, centros y pases filtrados[cite: 3].
-* **Fase Defensiva y Presión:** Registro de acciones defensivas por zona (tercio defensivo, área de penal, presión alta) y efectividad en duelos/recuperaciones[cite: 3].
-* **Transiciones Ataque-Defensa:** Evaluación del $xG$ generado y velocidad de remate tras recuperaciones tras pérdida o recuperaciones en campo rival[cite: 3].
-* **Análisis por Ventanas de Tiempo:** Micro-análisis del rendimiento de jugadores en intervalos de 5 minutos según el estado del partido (ganando, empatando, perdiendo)[cite: 3].
+* **Generación de Ocasiones y $xG$:** Análisis de la calidad de remates, carril de creación donde se encontraba el jugador al momento de la ocasión/gol (izquierdo, centro, derecho) y contribución de pases clave.
+* **Progresión de Balón:** Medición de pases progresivos calculando la reducción de distancia a puerta a través de coordenadas $(x, y)$, cambios de juego, centros y pases filtrados.
+* **Fase Defensiva y Presión:** Registro de acciones defensivas por zona (tercio defensivo, área de penal, presión alta) y efectividad en duelos/recuperaciones.
+* **Transiciones Ataque-Defensa:** Evaluación del $xG$ generado y velocidad de remate tras recuperaciones tras pérdida o recuperaciones en campo rival.
+* **Análisis por Ventanas de Tiempo:** Micro-análisis del rendimiento de jugadores en intervalos de 5 minutos según el estado del partido (ganando, empatando, perdiendo).
 
 ---
 ## 🏗️ Arquitectura de Ingeniería de Datos & Pipeline ETL
@@ -51,9 +51,9 @@ El desarrollo se estructuró en tres capas principales de ingeniería de softwar
 ---
 
 ### Principales Funcionalidades del Pipeline:
-1. **Atomicidad y Gestión de Descargas:** Guardado atómico de archivos para garantizar la integridad de los datos procesados[cite: 2].
-2. **Normalización Lingüística:** Procesamiento de nombres de directores técnicos y equipos mediante normalización Unicode (NFKD) para eliminar tildes y caracteres especiales[cite: 1, 2].
-3. **Ubicación en Ocasiones de Gol:** Clasificación espacial por carril (izquierdo, central, derecho) según la posición del jugador al registrarse un remate o gol[cite: 3].
+1. **Atomicidad y Gestión de Descargas:** Guardado atómico de archivos para garantizar la integridad de los datos procesados[ : 2].
+2. **Normalización Lingüística:** Procesamiento de nombres de directores técnicos y equipos mediante normalización Unicode (NFKD) para eliminar tildes y caracteres especiales[ : 1, 2].
+3. **Ubicación en Ocasiones de Gol:** Clasificación espacial por carril (izquierdo, central, derecho) según la posición del jugador al registrarse un remate o gol.
 
 ---
 
@@ -61,15 +61,15 @@ El desarrollo se estructuró en tres capas principales de ingeniería de softwar
 
 Para permitir consultas complejas con tiempos de respuesta óptimos en el dashboard, se diseñó un modelo relacional en SQLite cuya definición de tablas, índices y vistas se encuentra documentada en el archivo [`schema.sql`](./schema.sql):
 
-* **`partidos`**: Información general de los encuentros, fechas y rivales[cite: 3].
-* **`eventos`**: Tabla principal con todos los eventos registrados, coordenadas iniciales/finales, indicador de presión y patrón de juego[cite: 3].
-* **`pases`**: Atributos analíticos de pase (distancia, ángulo, pase progresivo, *shot assist*, *goal assist*, centros, cambios de juego)[cite: 3].
-* **`remates`**: Métricas de tiro, Expected Goals ($xG$), carril de creación del remate, técnica utilizada y parte del cuerpo[cite: 3].
-* **`acciones_defensivas`**: Cobertura defensiva, presiones, intercepciones y recuperaciones divididas por tercio de campo[cite: 3].
-* **`posesiones`**: Secuencias de posesión, número de pases/conducciones, duración en segundos y detección de recuperaciones en zona alta[cite: 3].
-* **`transiciones`**: Evaluación de secuencias de ataque inmediato tras recuperación de balón (tiempo hasta el tiro, pases previos y $xG$ acumulado)[cite: 3].
-* **`features_jugador_ventana`**: Agregación de métricas individuales en bloques de 5 minutos cruzados con el estado dinámico del marcador[cite: 3].
-* **Vistas Analíticas (`vw_*`)**: Vistas SQL precalculadas (`vw_posesiones_analiticas`, `vw_transiciones`, `vw_jugador_partido`) para simplificar el consumo de datos desde la interfaz web[cite: 3].
+* **`partidos`**: Información general de los encuentros, fechas y rivales.
+* **`eventos`**: Tabla principal con todos los eventos registrados, coordenadas iniciales/finales, indicador de presión y patrón de juego.
+* **`pases`**: Atributos analíticos de pase (distancia, ángulo, pase progresivo, *shot assist*, *goal assist*, centros, cambios de juego).
+* **`remates`**: Métricas de tiro, Expected Goals ($xG$), carril de creación del remate, técnica utilizada y parte del cuerpo.
+* **`acciones_defensivas`**: Cobertura defensiva, presiones, intercepciones y recuperaciones divididas por tercio de campo.
+* **`posesiones`**: Secuencias de posesión, número de pases/conducciones, duración en segundos y detección de recuperaciones en zona alta.
+* **`transiciones`**: Evaluación de secuencias de ataque inmediato tras recuperación de balón (tiempo hasta el tiro, pases previos y $xG$ acumulado).
+* **`features_jugador_ventana`**: Agregación de métricas individuales en bloques de 5 minutos cruzados con el estado dinámico del marcador.
+* **Vistas Analíticas (`vw_*`)**: Vistas SQL precalculadas (`vw_posesiones_analiticas`, `vw_transiciones`, `vw_jugador_partido`) para simplificar el consumo de datos desde la interfaz web.
 
 ---
 ## 🌐 Aplicación Web
