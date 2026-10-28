@@ -83,8 +83,15 @@ Filtros por Partido y Rival: Exploración comparativa entre encuentros.
 
 👉 Visita la plataforma: https://jardine-hackathon-isac-2026.vercel.app/
 ---
+## 👥 Equipo de Desarrollo
 
+Este proyecto fue desarrollado colaborativamente por:
 
+* **Emir** — [GitHub](https://github.com/tu-usuario)
+* **Joel Osmar Nicolás Vásquez** — [@Joel-Osmar](https://github.com/Joel-Osmar)
+* **Jaime Fabián Cortés Vega** — [@JaimeVGA](https://github.com/JaimeVGA)
+* **Javier Gustavo Hernández Mora**
+---
 ## 📁 Estructura del Repositorio
 
 ```text
